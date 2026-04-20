@@ -101,19 +101,23 @@ $navItems = [
                 <div class="cases-list">
                     <?php while ($cases_query->have_posts()) : $cases_query->the_post(); ?>
                         <?php
-                        $case_media_type = get_field('case_media_type');
-                        $case_image = get_field('case_image');
-                        $case_video = get_field('case_video');
+                        $case_preview_media_type = get_field('case_preview_media_type');
+                        $case_preview_image = get_field('case_preview_image');
+                        $case_preview_video = get_field('case_preview_video');
                         ?>
 
                         <a href="<?php the_permalink(); ?>" class="case-item">
                             <div class="case-item-media">
-                                <?php if ($case_media_type === 'video' && !empty($case_video)) : ?>
+                                <?php if ($case_preview_media_type === 'video' && !empty($case_preview_video)) : ?>
                                     <video autoplay muted loop playsinline>
-                                        <source src="<?php echo esc_url($case_video['url']); ?>" type="video/mp4">
+                                        <source
+                                            src="<?php echo esc_url($case_preview_video['url']); ?>"
+                                            type="<?php echo esc_attr($case_preview_video['mime_type']); ?>">
                                     </video>
-                                <?php elseif ($case_media_type === 'image' && !empty($case_image)) : ?>
-                                    <img src="<?php echo esc_url($case_image['url']); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                <?php elseif ($case_preview_media_type === 'image' && !empty($case_preview_image)) : ?>
+                                    <img
+                                        src="<?php echo esc_url($case_preview_image['url']); ?>"
+                                        alt="<?php echo esc_attr(get_the_title()); ?>">
                                 <?php elseif (has_post_thumbnail()) : ?>
                                     <?php the_post_thumbnail('large'); ?>
                                 <?php endif; ?>
@@ -122,7 +126,11 @@ $navItems = [
                             <div class="case-item-overlay"></div>
                         </a>
 
-                        <h3 class="case-item-title"><?php the_title(); ?></h3>
+                        <h3 class="case-item-title">
+                            <a href="<?php echo esc_url(get_the_permalink()); ?>">
+                                <?php the_title(); ?>
+                            </a>
+                        </h3>
                     <?php endwhile; ?>
                 </div>
 
@@ -132,6 +140,7 @@ $navItems = [
             <?php endif; ?>
         </div>
     </section>
+
 </main>
 
 <?php get_footer(); ?>

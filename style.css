@@ -1,5 +1,7 @@
 /*
 Theme Name: House of Achi
+Author: Daniella
+Version: 1.0
 */
 
 :root {
@@ -51,7 +53,7 @@ section[id] {
 .section-inner {
   width: min(1200px, 100%);
   margin: 0 auto;
-  padding: 60px 20px;
+  /* padding: 60px 20px; */
 }
 
 /*3. NAVIGATION*/
@@ -183,9 +185,7 @@ body.menu-open .nav-burger span:last-child {
   transform: rotate(-45deg);
 }
 
-/* =========================
-   4. NAVIGATION STATES
-========================= */
+/* NAVIGATION STATES */
 
 body.is-scrolled .hero-nav {
   background: var(--bg);
@@ -221,9 +221,7 @@ body.is-scrolled {
   background: var(--text);
 }
 
-/* =========================
-   5. HERO
-========================= */
+/* HERO */
 
 .hero {
   position: relative;
@@ -272,8 +270,8 @@ body.is-scrolled {
 }
 
 .hero-after-text {
-  margin: 0;
-  padding: 90px 20px;
+  margin: 10% 0;
+  padding: 0 20px;
   text-align: center;
 }
 
@@ -285,9 +283,7 @@ body.is-scrolled {
   line-height: 1.5;
 }
 
-/* =========================
-   6. GENERAL SECTION CONTENT
-========================= */
+/* GENERAL SECTION CONTENT */
 
 .who-content,
 .way-content {
@@ -358,9 +354,7 @@ body.is-scrolled {
   padding-bottom: 60px;
 }
 
-/* =========================
-   7. ABOUT PAGE
-========================= */
+/* ABOUT PAGE */
 
 .about-main {
   padding-top: clamp(100px, 12vw, 160px);
@@ -368,13 +362,16 @@ body.is-scrolled {
 }
 
 .about-main .section-inner {
-  padding-top: 0;
-  padding-bottom: 70px;
+  padding: 0 30px 70px;
 }
 
 .about-main .who-content,
 .about-main .way-content {
-  max-width: 1100px;
+  width: 100%;
+  max-width: clamp(360px, 60vw, 1100px);
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .about-main .who-text,
@@ -384,9 +381,7 @@ body.is-scrolled {
   text-align: center;
 }
 
-/* =========================
-   8. CASES
-========================= */
+/* CASES */
 
 .section-cases .section-inner {
   width: 100%;
@@ -403,6 +398,7 @@ body.is-scrolled {
 
 .cases-title {
   margin: 0;
+  margin-bottom: 2.2rem;
 }
 
 .cases-list {
@@ -447,11 +443,43 @@ body.is-scrolled {
 
 .case-item-title {
   display: block;
-  margin: 16px auto 32px;
+  margin: 40px auto 32px;
   color: var(--text);
   font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   text-align: center;
   text-transform: uppercase;
+}
+
+/* Remove link decoration for case titles */
+.case-item-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.case-item-title a:hover {
+  text-decoration: none;
+}
+
+/* Hover/focus chevron that fades/slides in */
+.case-item-title a {
+  position: relative;
+}
+
+.case-item-title a::after {
+  content: "\2192";
+  display: inline-block;
+  margin-left: 0.5rem;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    transform 200ms ease,
+    opacity 200ms ease;
+}
+
+.case-item-title a:hover::after,
+.case-item-title a:focus::after {
+  opacity: 1;
+  transform: translateX(3px);
 }
 
 .case-item:hover .case-item-media img,
@@ -460,9 +488,7 @@ body.is-scrolled {
   transform: scale(1.03);
 }
 
-/* =========================
-   9. FOOTER
-========================= */
+/* FOOTER */
 
 .site-footer {
   background: transparent;
@@ -635,9 +661,7 @@ body.is-scrolled {
   }
 }
 
-/* =========================
-   11. DESKTOP
-========================= */
+/* DESKTOP */
 
 @media (min-width: 769px) {
   :root {
@@ -688,12 +712,8 @@ body.is-scrolled {
     display: none;
   }
 
-  .section-inner {
-    padding: 80px 20px;
-  }
-
   .hero-after-text {
-    padding: 90px 20px;
+    padding: clamp(20px, 4vh, 48px) 20px;
   }
 
   .hero-after-text p {
@@ -711,7 +731,8 @@ body.is-scrolled {
 
   .about-main .who-content,
   .about-main .way-content {
-    max-width: 1100px;
+    max-width: clamp(360px, 60vw, 1400px);
+    margin: 0 auto;
   }
 
   .case-item {

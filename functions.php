@@ -49,3 +49,20 @@ function house_of_achi_scripts(): void
 }
 
 add_action('wp_enqueue_scripts', 'house_of_achi_scripts');
+
+function house_of_achi_case_styles(): void
+{
+    if (is_singular('case')) {
+        wp_enqueue_style(
+            'house-of-achi-case-style',
+            get_template_directory_uri() . '/assets/css/case.css',
+            [],
+            filemtime(get_template_directory() . '/assets/css/case.css')
+        );
+    }
+}
+
+add_action('wp_enqueue_scripts', 'house_of_achi_case_styles');
+
+// Hide admin bar on the front-end while developing locally
+add_filter('show_admin_bar', '__return_false');
