@@ -2,6 +2,11 @@
 
 declare(strict_types=1);
 
+// Include lightweight ACF stubs for local development / IDEs (only when safe)
+if (defined('WP_DEBUG') && WP_DEBUG && !function_exists('get_field')) {
+    require_once get_template_directory() . '/inc/acf-stubs.php';
+}
+
 function house_of_achi_register_post_types(): void
 {
     register_post_type('case', [
