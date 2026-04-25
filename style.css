@@ -641,23 +641,23 @@ body.is-scrolled {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 28px;
-    text-align: left;
+    text-align: center;
   }
 
   .footer-brand,
   .footer-col {
-    align-items: flex-start;
+    align-items: center;
   }
 
   .footer-icons,
   .footer-link,
   .footer-nav {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .footer-bottom {
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
   }
 }
 
@@ -674,6 +674,14 @@ body.is-scrolled {
 
   .hero-nav-inner {
     padding: 0 18px;
+
+/* Hide the right-arrow added via ::after on case titles for mobile */
+@media (max-width: 560px) {
+  .case-item-title a::after {
+    display: none;
+    content: none;
+  }
+}
   }
 
   .hero-nav-logo img {
@@ -750,14 +758,19 @@ body.is-scrolled {
 
 @media (min-width: 901px) {
   .footer-grid {
-    grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
     padding: 44px 0;
+    text-align: center;
+    justify-items: center;
+    max-width: 900px;
+    margin: 0 auto;
   }
 
   .footer-bottom {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 24px;
   }
 }

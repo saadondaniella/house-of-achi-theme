@@ -67,6 +67,19 @@ function house_of_achi_case_styles(): void
     }
 }
 
+add_filter('render_block', function ($block_content, $block) {
+
+    if ($block['blockName'] === 'core/video') {
+        $block_content = str_replace(
+            '<video',
+            '<video autoplay muted loop playsinline',
+            $block_content
+        );
+    }
+
+    return $block_content;
+}, 10, 2);
+
 add_action('wp_enqueue_scripts', 'house_of_achi_case_styles');
 
 // Hide admin bar on the front-end while developing locally

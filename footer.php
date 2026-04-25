@@ -2,7 +2,6 @@
 $year = date("Y");
 $INSTAGRAM_URL = "https://www.instagram.com/house.of.achi/";
 $EMAIL = "hello@houseofachi.com";
-$PHONE = "+46 70 000 00 00";
 ?>
 
 <footer class="site-footer">
@@ -10,14 +9,6 @@ $PHONE = "+46 70 000 00 00";
         <div class="footer-topline" aria-hidden="true"></div>
 
         <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="<?php echo home_url('/'); ?>" class="footer-logo" aria-label="House of Achi">
-                    <img
-                        src="<?php echo get_template_directory_uri(); ?>/images/achi-logo.png"
-                        alt="House of Achi logo"
-                        loading="lazy" />
-                </a>
-            </div>
 
             <div class="footer-col">
                 <h3 class="footer-heading">Follow us</h3>
@@ -56,15 +47,7 @@ $PHONE = "+46 70 000 00 00";
                     <?php echo $EMAIL; ?>
                 </a>
 
-                <a class="footer-link" href="tel:<?php echo str_replace(' ', '', $PHONE); ?>">
-                    <img
-                        class="footer-linkicon"
-                        src="<?php echo get_template_directory_uri(); ?>/images/icon-chat.png"
-                        alt=""
-                        aria-hidden="true"
-                        loading="lazy" />
-                    <?php echo $PHONE; ?>
-                </a>
+
             </div>
         </div>
 
