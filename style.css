@@ -675,13 +675,13 @@ body.is-scrolled {
   .hero-nav-inner {
     padding: 0 18px;
 
-/* Hide the right-arrow added via ::after on case titles for mobile */
-@media (max-width: 560px) {
-  .case-item-title a::after {
-    display: none;
-    content: none;
-  }
-}
+    /* Hide the right-arrow added via ::after on case titles for mobile */
+    @media (max-width: 560px) {
+      .case-item-title a::after {
+        display: none;
+        content: none;
+      }
+    }
   }
 
   .hero-nav-logo img {
