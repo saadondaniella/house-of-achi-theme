@@ -12,7 +12,7 @@ $hero_logo_color = get_field('hero_logo_color') ?: 'white';
 
 $hero_logo = $hero_logo_color === 'dark'
     ? get_template_directory_uri() . '/images/achi-logo.png'
-    : get_template_directory_uri() . '/images/logo-white.svg';
+    : get_template_directory_uri() . '/images/logo-white.png';
 ?>
 
 <nav class="hero-nav" aria-label="Sektioner" data-nav>
