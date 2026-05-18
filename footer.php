@@ -15,7 +15,7 @@ $EMAIL = "hello@houseofachi.com";
                 <div class="footer-icons">
                     <a
                         class="footer-icon"
-                        href="<?php echo $INSTAGRAM_URL; ?>"
+                        href="<?php echo esc_url($INSTAGRAM_URL); ?>"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Instagram"
@@ -37,14 +37,14 @@ $EMAIL = "hello@houseofachi.com";
             <div class="footer-col">
                 <h3 class="footer-heading">Contact</h3>
 
-                <a class="footer-link" href="mailto:<?php echo $EMAIL; ?>">
+                <a class="footer-link" href="mailto:<?php echo esc_attr($EMAIL); ?>">
                     <img
                         class="footer-linkicon"
-                        src="<?php echo get_template_directory_uri(); ?>/images/icon-mail.png"
+                        src="<?php echo esc_url(get_template_directory_uri() . '/images/icon-mail.png'); ?>"
                         alt=""
                         aria-hidden="true"
                         loading="lazy" />
-                    <?php echo $EMAIL; ?>
+                    <?php echo esc_html($EMAIL); ?>
                 </a>
 
 
@@ -54,6 +54,11 @@ $EMAIL = "hello@houseofachi.com";
 
     </div>
 </footer>
+
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" type="button">✕</button>
+    <img src="" alt="">
+</div>
 
 <?php wp_footer(); ?>
 </body>

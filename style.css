@@ -262,6 +262,12 @@ body.is-scrolled {
   letter-spacing: 0.12em;
 }
 
+@media (max-width: 700px) {
+  .hero-title {
+    font-size: clamp(2.8rem, 12vw, 4.2rem);
+  }
+}
+
 .hero-subtitle {
   margin: 0;
   color: var(--bg);
@@ -663,6 +669,14 @@ body.is-scrolled {
 
 /* DESKTOP */
 
+/* Hide the right-arrow added via ::after on case titles for mobile */
+@media (max-width: 560px) {
+  .case-item-title a::after {
+    display: none;
+    content: none;
+  }
+}
+
 @media (min-width: 769px) {
   :root {
     --nav-height: 88px;
@@ -674,14 +688,6 @@ body.is-scrolled {
 
   .hero-nav-inner {
     padding: 0 18px;
-
-    /* Hide the right-arrow added via ::after on case titles for mobile */
-    @media (max-width: 560px) {
-      .case-item-title a::after {
-        display: none;
-        content: none;
-      }
-    }
   }
 
   .hero-nav-logo img {
@@ -773,4 +779,53 @@ body.is-scrolled {
     justify-content: center;
     gap: 24px;
   }
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  display: block;
+  width: min(90vw, 420px);
+  max-height: 85vh;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 769px) {
+  .lightbox img {
+    width: min(80vw, 900px);
+    max-height: 85vh;
+  }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.case-single-content img {
+  cursor: zoom-in;
+}
+
+.case-single-image,
+.case-single [data-case-lightbox] img {
+  cursor: zoom-in;
 }

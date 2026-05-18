@@ -53,7 +53,8 @@ get_header();
                             <img
                                 src="<?php echo esc_url($case_detail_image['url']); ?>"
                                 alt="<?php echo esc_attr($case_detail_image['alt'] ?: get_the_title()); ?>"
-                                class="case-single-image">
+                                class="case-single-image"
+                                data-case-lightbox>
                         <?php endif; ?>
                     </section>
 
@@ -72,3 +73,12 @@ get_header();
         <?php endwhile; ?>
     <?php endif; ?>
 </main>
+
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" type="button">✕</button>
+    <img src="" alt="">
+</div>
+
+<?php wp_footer(); ?>
+</body>
+</html>

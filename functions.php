@@ -32,6 +32,18 @@ function house_of_achi_register_post_types(): void
 
 add_action('init', 'house_of_achi_register_post_types');
 
+add_filter('the_content', function ($content) {
+    if (!is_singular('case')) {
+        return $content;
+    }
+
+    return preg_replace(
+        '/<img(?![^>]*\bdata-case-lightbox\b)/i',
+        '<img data-case-lightbox="1"',
+        $content
+    );
+});
+
 function house_of_achi_scripts(): void
 {
     $style_path = get_template_directory() . '/style.css';
@@ -68,6 +80,14 @@ function house_of_achi_case_styles(): void
 }
 
 add_filter('render_block', function ($block_content, $block) {
+
+    if (is_singular('case') && $block['blockName'] === 'core/image') {
+        $block_content = str_replace(
+            '<figure class="wp-block-image',
+            '<figure class="wp-block-image" data-case-lightbox',
+            $block_content
+        );
+    }
 
     if ($block['blockName'] === 'core/video') {
         $block_content = str_replace(

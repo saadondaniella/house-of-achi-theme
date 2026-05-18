@@ -7,15 +7,21 @@ $navItems = [
     ['href' => home_url('/about-achi/#talk'), 'label' => 'LET’S TALK'],
     ['href' => home_url('/#cases'), 'label' => 'CASES'],
 ];
+
+$hero_logo_color = get_field('hero_logo_color') ?: 'white';
+
+$hero_logo = $hero_logo_color === 'dark'
+    ? get_template_directory_uri() . '/images/achi-logo.png'
+    : get_template_directory_uri() . '/images/logo-white.svg';
 ?>
 
 <nav class="hero-nav" aria-label="Sektioner" data-nav>
     <div class="hero-nav-inner">
         <a href="<?php echo esc_url(home_url('/')); ?>" class="hero-nav-logo" aria-label="Go to homepage">
             <img
-                src="<?php echo esc_url(get_template_directory_uri() . '/images/logo-white.png'); ?>"
+                src="<?php echo esc_url($hero_logo); ?>"
                 alt="House of Achi logo"
-                data-logo-white="<?php echo esc_url(get_template_directory_uri() . '/images/logo-white.png'); ?>"
+                data-logo-start="<?php echo esc_url($hero_logo); ?>"
                 data-logo-dark="<?php echo esc_url(get_template_directory_uri() . '/images/achi-logo.png'); ?>">
         </a>
 
@@ -56,6 +62,9 @@ $navItems = [
         $media_type = get_field('hero_media_type');
         $video = get_field('hero_video');
         $image = get_field('hero_image');
+        $hero_title_color = get_field('hero_title_color');
+        $hero_subtitle = get_field('hero_subtitle');
+        $hero_subtitle_color = get_field('hero_subtitle_color');
         ?>
 
         <div class="hero-media">
@@ -71,15 +80,28 @@ $navItems = [
         </div>
 
         <div class="hero-overlay">
-            <h1 class="hero-title">ACHI</h1>
-            <p class="hero-subtitle">INTIMATE CONCEPT BRAND EXPERIENCES</p>
+            <h1
+                class="hero-title"
+                style="color: <?php echo esc_attr($hero_title_color ?: '#fbfae7'); ?>;">
+
+                ACHI
+            </h1>
+
+            <p
+                class="hero-subtitle"
+                style="color: <?php echo esc_attr($hero_subtitle_color ?: '#fbfae7'); ?>;">
+                <?php echo esc_html($hero_subtitle ?: 'INTIMATE CONCEPT BRAND EXPERIENCES'); ?>
+            </p>
         </div>
     </section>
 
     <div class="hero-after-text">
-        <p>HOUSE OF ACHI creates intimate, captivating brand experiences where aesthetics meet intention.<br>
+        <p>
+            HOUSE OF ACHI creates intimate, captivating brand experiences where aesthetics meet intention.<br>
             We translate identity into atmosphere — shaping moments that are felt, remembered, and shared.<br>
-            Rooted in strategy and driven by emotion, each concept is carefully curated to elevate brands <br> beyond the expected.</p>
+            Rooted in strategy and driven by emotion, each concept is carefully curated to elevate brands <br>
+            beyond the expected.
+        </p>
     </div>
 
     <section id="cases" class="section section-cases">
@@ -140,7 +162,6 @@ $navItems = [
             <?php endif; ?>
         </div>
     </section>
-
 </main>
 
 <?php get_footer(); ?>
